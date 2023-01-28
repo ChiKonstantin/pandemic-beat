@@ -76,10 +76,20 @@ export default function MainPage() {
 			(elem) => elem.countryCode === countryCode
 		)[0].casesArr;
 		let strokeStyle = '';
+		let r, g, b;
+		let sign = 1;
 		if (type === 'new_cases') {
-			strokeStyle = '#474DFF';
+			// strokeStyle = '#474DFF';
+			r = 71;
+			g = 77;
+			b = 255;
+			sign = 1;
 		} else {
-			strokeStyle = '#29121E';
+			// strokeStyle = '#BF4CCE';
+			r = 191;
+			g = 76;
+			b = 201;
+			sign = -1;
 		}
 		const casesMax = Math.max(...casesDataArr);
 		const scaleFactor =
@@ -89,7 +99,7 @@ export default function MainPage() {
 			const topOffset = canvasH - casesDataArr[i] * scaleFactor;
 			const leftOffset = spacing * (i + 1);
 			ctx.beginPath();
-			ctx.strokeStyle = strokeStyle;
+			ctx.strokeStyle = `rgb(${r + i * sign}, ${g}, ${b})`;
 			ctx.lineWidth = '2';
 			ctx.moveTo(leftOffset, canvasH);
 			ctx.lineTo(leftOffset, topOffset);
@@ -210,18 +220,38 @@ export default function MainPage() {
 		}
 	}
 	return (
-		<div>
-			<h1>Pandemic Beat</h1>
-			<div>Intro here..</div>
-			<input
-				type='text'
-				id='search_input'
-				onKeyUp={searchCountry}
-				placeholder='Search for country..'
-				title='Type in a name'
-			/>
-			<div className='button-div' onClick={clearSearch}>
-				Clear
+		<div id='main-page'>
+			<div id='header-wrapper'>
+				<div id='header'>Pandemic Beat</div>
+				<div id='title-graphics'></div>
+			</div>
+			{/* <div>by Kostya Balakirev</div> */}
+
+			<div id='summary_div'>
+				1871 is a non-profit digital startup incubator located in the
+				Merchandise Mart, Chicago, Illinois.[1] The organization was founded in
+				2012 by J.B. Pritzker and is the flagship project of The Chicagoland
+				Entrepreneurial Center (CEC), a non-profit organization that supports
+				entrepreneurs on their path to building high-growth, sustainable
+				businesses that serve as platforms for economic development and civic
+				leadership. Led by CEO Betsy Ziegler, 1871 has become a major hub of
+				Chicago's technology and entrepreneurial ecosystem and hosts over 400
+				early-stage companies as well as nationally recognized accelerators,
+				industry-specific incubators, and tech talent schools.[1][2] 1871 was
+				recognized in 2019 by UBI Global as the Top Private Business Incubator
+				in the World and Most Promising Incubator for Women Founders.
+			</div>
+			<div id='search-wrap'>
+				<input
+					type='text'
+					id='search_input'
+					onKeyUp={searchCountry}
+					placeholder='Search for country..'
+					title='Type in a name'
+				/>
+				<div className='button-div' onClick={clearSearch}>
+					Clear search
+				</div>
 			</div>
 			<div
 				id='new_cases_button'

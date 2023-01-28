@@ -1,10 +1,93 @@
+body {
+	background-color: rgb(46, 46, 46);
+	color: white;
+}
+#header-wrapper {
+	display: flex;
+	/* justify-content: center; */
+	align-items: center;
+	flex-direction: column;
+	background-color: rgba(46, 46, 46, 0.541);
+	font-size: xx-large;
+	font-weight: bolder;
+	border-color: black;
+	/* border-style: solid; */
+	height: 70px;
+	width: 100%;
+	position: fixed;
+	top: 0px;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+/* #header {
+	display: flex;
+	justify-content: center;
+} */
+
+#search_input {
+	width: 300px;
+}
+#search-wrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 69px;
+	height: 70px;
+	/* background-color: rgba(46, 46, 46, 0.541);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px); */
+}
+
+table {
+	margin-bottom: 100vh;
+}
+
+#main-page {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* gap: 10px; */
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#title-graphics {
+	width: 500px;
+	height: 10px;
+	background-image: linear-gradient(to right, blue, blueviolet);
+	margin-bottom: 15px;
+	border-radius: 10px;
+}
+
+#summary_div {
+	width: 500px;
+	height: 300px;
+	background-color: rgba(0, 0, 0, 0.425);
+	border-radius: 10px;
+	padding: 10px 15px 10px 15px;
+	text-align: left;
+	margin-bottom: 15px;
+	margin-top: 70px;
+}
+/* .country_name_divs {
+} */
+
 .button-div {
+	text-align: center;
 	background-color: blueviolet;
 	color: white;
 	width: 100px;
-	height: 50px;
-	font-family: Arial, Helvetica, sans-serif;
-	border-radius: 10px;
+	height: auto;
+	padding: 2px;
+	border-radius: 100px;
+	cursor: pointer;
+}
+
+.button-div:active {
+	background-color: black;
 }
 
 .runner-div-animated {
@@ -14,7 +97,7 @@
 	animation-duration: 2s;
 	animation-name: runner;
 	animation-timing-function: linear;
-	animation-iteration-count: 4.2;
+	animation-iteration-count: 4;
 }
 
 @keyframes runner {
@@ -30,4 +113,19 @@
 	background-color: red;
 	width: 0px;
 	height: 5px;
+}
+
+#new_cases_button {
+	background-color: blue;
+}
+
+#new_cases_button:hover {
+	background-color: yellow;
+}
+
+#deceased_button {
+	background-color: grey;
+}
+#deceased_button {
+	background-color: grey;
 }
