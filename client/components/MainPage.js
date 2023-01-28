@@ -253,25 +253,27 @@ export default function MainPage() {
 					Clear search
 				</div>
 			</div>
-			<div
-				id='new_cases_button'
-				className='button-div'
-				style={{ backgroundColor: 'blue' }}
-				onClick={() => {
-					showGraphs('new_cases');
-				}}
-			>
-				New Cases Graphs
-			</div>
-			<div
-				id='deceased_button'
-				className='button-div'
-				style={{ backgroundColor: 'grey' }}
-				onClick={() => {
-					showGraphs('deceased');
-				}}
-			>
-				Deceased Graphs
+			<div id='buttons-wrap'>
+				<div
+					id='new_cases_button'
+					className='button-div'
+					style={{ backgroundColor: 'blue' }}
+					onClick={() => {
+						showGraphs('new_cases');
+					}}
+				>
+					Infected
+				</div>
+				<div
+					id='deceased_button'
+					className='button-div'
+					style={{ backgroundColor: 'grey' }}
+					onClick={() => {
+						showGraphs('deceased');
+					}}
+				>
+					Deceased
+				</div>
 			</div>
 			{/* <div>USA!!!</div>
 			<audio
@@ -305,7 +307,7 @@ export default function MainPage() {
 								<Player country={countryCode} type={'new_deceased'} />
 							</div>
 
-							<hr />
+							{/* <hr /> */}
 						</td>
 					</tr>
 				))}

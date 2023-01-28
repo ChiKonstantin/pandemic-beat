@@ -16,8 +16,8 @@ body {
 	width: 100%;
 	position: fixed;
 	top: 0px;
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(7px);
+	-webkit-backdrop-filter: blur(7px);
 }
 /* #header {
 	display: flex;
@@ -25,20 +25,39 @@ body {
 } */
 
 #search_input {
-	width: 300px;
+	width: 375px;
 }
 #search-wrap {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	position: -webkit-sticky;
 	position: sticky;
 	top: 69px;
 	height: 70px;
-	/* background-color: rgba(46, 46, 46, 0.541);
+	width: 500px;
+	/* border-style: solid; */
+	gap: 15px;
+	background-color: rgba(46, 46, 46, 0.541);
+	backdrop-filter: blur(7px);
+	-webkit-backdrop-filter: blur(7px);
+}
+
+#buttons-wrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	gap: 15px;
+	align-items: center;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 120px;
+	height: 50px;
+	width: 500px;
+	background-color: rgba(46, 46, 46, 0.541);
 	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px); */
+	-webkit-backdrop-filter: blur(10px);
 }
 
 table {
@@ -91,13 +110,15 @@ table {
 }
 
 .runner-div-animated {
-	background-color: red;
+	background-color: blueviolet;
 	width: 0px;
 	height: 5px;
 	animation-duration: 2s;
 	animation-name: runner;
 	animation-timing-function: linear;
 	animation-iteration-count: 4;
+	border-radius: 10px;
+	margin-bottom: 5px;
 }
 
 @keyframes runner {
@@ -113,6 +134,7 @@ table {
 	background-color: red;
 	width: 0px;
 	height: 5px;
+	margin-bottom: 5px;
 }
 
 #new_cases_button {

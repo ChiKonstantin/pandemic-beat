@@ -32,7 +32,7 @@ export default function Player(props) {
 		if (playStatus[country]) {
 			return playStatus[country];
 		} else {
-			return `play`;
+			return `PLAY`;
 		}
 	}
 	function playAudio(event) {
