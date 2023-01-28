@@ -1,9 +1,10 @@
 .button-div {
 	background-color: blueviolet;
-	color: red;
+	color: white;
 	width: 100px;
 	height: 50px;
 	font-family: Arial, Helvetica, sans-serif;
+	border-radius: 10px;
 }
 
 .runner-div-animated {
@@ -29,9 +30,4 @@
 	background-color: red;
 	width: 0px;
 	height: 5px;
-}
-
-.graph {
-	border-color: red;
-	border-width: 1px;
 }

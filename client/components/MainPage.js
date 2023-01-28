@@ -69,23 +69,27 @@ export default function MainPage() {
 	// 	return arr;
 	// }
 
-	function generateGraph(countryCode) {
-		const c = document.getElementById(`${countryCode}_chart_plot`);
+	function generateGraph(countryCode, data, type) {
+		const c = document.getElementById(`${countryCode}_chart_${type}`);
 		var ctx = c.getContext('2d');
-		const casesDataArr = newCasesData.filter(
+		const casesDataArr = data.filter(
 			(elem) => elem.countryCode === countryCode
 		)[0].casesArr;
-		console.log('CASES DATA ARR ', casesDataArr);
+		let strokeStyle = '';
+		if (type === 'new_cases') {
+			strokeStyle = '#474DFF';
+		} else {
+			strokeStyle = '#29121E';
+		}
 		const casesMax = Math.max(...casesDataArr);
 		const scaleFactor =
 			Math.round(((canvasH - canvasPadding) / casesMax) * 1000000) / 1000000;
 		const spacing = canvasW / casesDataArr.length;
-		console.log('CASES MAX, SCALE FACTOR', casesMax, scaleFactor);
 		for (let i = 0; i < casesDataArr.length; i++) {
 			const topOffset = canvasH - casesDataArr[i] * scaleFactor;
 			const leftOffset = spacing * (i + 1);
 			ctx.beginPath();
-			ctx.strokeStyle = '#C10742';
+			ctx.strokeStyle = strokeStyle;
 			ctx.lineWidth = '2';
 			ctx.moveTo(leftOffset, canvasH);
 			ctx.lineTo(leftOffset, topOffset);
@@ -141,7 +145,8 @@ export default function MainPage() {
 		// let chartArr = [];
 		for (let i = 0; i < countriesArr.length; i++) {
 			// chartArr[i] = generateChart(countriesArr[i]);
-			generateGraph(countriesArr[i]);
+			generateGraph(countriesArr[i], newCasesData, 'new_cases');
+			generateGraph(countriesArr[i], deceasedData, 'deceased');
 		}
 		// return () => {
 		// 	for (let i = 0; i < countriesArr.length; i++) {
@@ -176,6 +181,34 @@ export default function MainPage() {
 		// console.log('**********', searchInput);
 		searchCountry();
 	}
+
+	function showGraphs(type) {
+		let newCasesButton = document.getElementById('new_cases_button');
+		let deceasedButton = document.getElementById('deceased_button');
+		newCasesButton.style.backgroundColor = 'blue';
+		deceasedButton.style.backgroundColor = 'grey';
+		let newCasesDisplay = '';
+		let deceasedDisplay = 'none';
+		if (type === 'deceased') {
+			newCasesDisplay = 'none';
+			deceasedDisplay = '';
+			newCasesButton.style.backgroundColor = 'grey';
+			deceasedButton.style.backgroundColor = 'blue';
+		}
+		let newCasesGraphs = document.getElementsByClassName('new_cases_graphs');
+		let deceasedGraphs = document.getElementsByClassName('deceased_graphs');
+
+		const graphsCount = Math.max(newCasesGraphs.length, deceasedGraphs.length);
+		for (let i = 0; i < graphsCount; i++) {
+			if (newCasesGraphs[i]) {
+				newCasesGraphs[i].style.display = newCasesDisplay;
+			}
+
+			if (deceasedGraphs[i]) {
+				deceasedGraphs[i].style.display = deceasedDisplay;
+			}
+		}
+	}
 	return (
 		<div>
 			<h1>Pandemic Beat</h1>
@@ -190,8 +223,26 @@ export default function MainPage() {
 			<div className='button-div' onClick={clearSearch}>
 				Clear
 			</div>
-			<div className='button-div'>New Cases</div>
-			<div className='button-div'>Deceased</div>
+			<div
+				id='new_cases_button'
+				className='button-div'
+				style={{ backgroundColor: 'blue' }}
+				onClick={() => {
+					showGraphs('new_cases');
+				}}
+			>
+				New Cases Graphs
+			</div>
+			<div
+				id='deceased_button'
+				className='button-div'
+				style={{ backgroundColor: 'grey' }}
+				onClick={() => {
+					showGraphs('deceased');
+				}}
+			>
+				Deceased Graphs
+			</div>
 			{/* <div>USA!!!</div>
 			<audio
 				id='US'
@@ -201,22 +252,31 @@ export default function MainPage() {
 			<table id='countries_table'>
 				{countriesArr.map((countryCode) => (
 					<tr>
-						{/* <td> */}
-						<div className='country_name_divs'>
-							{returnCountryName(countryCode)}
-						</div>
+						<td>
+							<div className='country_name_divs'>
+								{returnCountryName(countryCode)}
+							</div>
 
-						{/* <canvas id={`${countryCode}_chart`}></canvas> */}
-						<canvas
-							id={`${countryCode}_chart_plot`}
-							width={canvasW}
-							height={canvasH}
-							className='graph'
-						></canvas>
-						<Player country={countryCode} />
+							{/* <canvas id={`${countryCode}_chart`}></canvas> */}
+							<div className='new_cases_graphs'>
+								<canvas
+									id={`${countryCode}_chart_new_cases`}
+									width={canvasW}
+									height={canvasH}
+								></canvas>
+								<Player country={countryCode} type={'new_cases'} />
+							</div>
+							<div className='deceased_graphs' style={{ display: 'none' }}>
+								<canvas
+									id={`${countryCode}_chart_deceased`}
+									width={canvasW}
+									height={canvasH}
+								></canvas>
+								<Player country={countryCode} type={'new_deceased'} />
+							</div>
 
-						<hr />
-						{/* </td> */}
+							<hr />
+						</td>
 					</tr>
 				))}
 			</table>

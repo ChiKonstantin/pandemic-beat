@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 
 export default function Player(props) {
-	const { country } = props;
+	const { country, type } = props;
 	const [playStatus, setPlayStatus] = useState({});
 	const [runnerDivName, setRunnerDiv] = useState('runner-div');
+
+	let fileEnding = '';
+	if (type === 'new_deceased') {
+		fileEnding = '_deceased';
+	}
 
 	function setPlay(event) {
 		const countryCode = event.target.id.slice(0, 2);
@@ -32,7 +37,7 @@ export default function Player(props) {
 	}
 	function playAudio(event) {
 		const country = event.target.id;
-		const countryAudio = document.getElementById(`${country}_audio`);
+		const countryAudio = document.getElementById(`${country}_audio_${type}`);
 		if (!countryAudio.paused) {
 			countryAudio.pause();
 			countryAudio.currentTime = 0;
@@ -45,8 +50,8 @@ export default function Player(props) {
 		<>
 			<div className={runnerDivName}></div>
 			<audio
-				id={`${country}_audio`}
-				src={`https://storage.googleapis.com/pandemic_beat_wavs/sound_files_new_cases/${country}_pandemic_beat.wav`}
+				id={`${country}_audio_${type}`}
+				src={`https://storage.googleapis.com/pandemic_beat_wavs/sound_files_${type}/${country}_pandemic_beat${fileEnding}.wav`}
 				onEnded={setPlay}
 				onPause={setPlay}
 				onPlay={setStop}
