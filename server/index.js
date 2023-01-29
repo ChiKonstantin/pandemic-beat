@@ -3,8 +3,6 @@ const app = express();
 const path = require('path');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-const C = require('construct-js');
-const fs = require('fs');
 const PORT = process.env.PORT || 8083;
 const router = require('./apiRoutes');
 
