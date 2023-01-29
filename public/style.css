@@ -2,22 +2,54 @@ body {
 	background-color: rgb(46, 46, 46);
 	color: white;
 }
+
+#top-div {
+	width: 100vw;
+	max-height: 20vw;
+	min-height: 150px;
+	border-color: blue;
+	/* border-style: solid; */
+	position: fixed;
+	top: 0px;
+	z-index: 1;
+	/* background-color: rgba(46, 46, 46, 0.541); */
+	/* backdrop-filter: blur(7px);
+	-webkit-backdrop-filter: blur(7px); */
+	background-image: linear-gradient(
+		to bottom,
+		rgba(46, 46, 46),
+		rgba(46, 46, 46),
+		rgba(46, 46, 46),
+		rgba(255, 255, 255, 0)
+	);
+}
+
 #header-wrapper {
 	display: flex;
 	/* justify-content: center; */
 	align-items: center;
 	flex-direction: column;
-	background-color: rgba(46, 46, 46, 0.541);
+	/* background-color: rgba(46, 46, 46, 0.541); */
 	font-size: xx-large;
 	font-weight: bolder;
-	border-color: black;
+	border-color: red;
 	/* border-style: solid; */
-	height: 70px;
-	width: 100%;
+	height: 65px;
+	width: 100vw;
 	position: fixed;
 	top: 0px;
-	backdrop-filter: blur(7px);
-	-webkit-backdrop-filter: blur(7px);
+	z-index: 3;
+	background-image: linear-gradient(
+		to bottom,
+		rgba(46, 46, 46),
+		rgba(46, 46, 46),
+		rgba(46, 46, 46),
+		rgba(255, 255, 255, 0)
+	);
+	margin-bottom: 15px;
+
+	/* backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px); */
 }
 /* #header {
 	display: flex;
@@ -25,7 +57,11 @@ body {
 } */
 
 #search_input {
-	width: 375px;
+	width: 80vw;
+	z-index: 3;
+	padding: 5px 10px 5px 20px;
+	border-radius: 50px;
+	border: 0px solid;
 }
 #search-wrap {
 	display: flex;
@@ -34,34 +70,90 @@ body {
 	align-items: center;
 	position: -webkit-sticky;
 	position: sticky;
-	top: 69px;
-	height: 70px;
+	top: 50px;
+	height: 50px;
 	width: 500px;
+	max-width: 80vw;
+	border-color: red;
 	/* border-style: solid; */
 	gap: 15px;
-	background-color: rgba(46, 46, 46, 0.541);
-	backdrop-filter: blur(7px);
-	-webkit-backdrop-filter: blur(7px);
+	z-index: 3;
+	/* background-color: rgba(46, 46, 46, 0.541); */
+	/* backdrop-filter: blur(7px);
+	-webkit-backdrop-filter: blur(7px); */
 }
 
 #buttons-wrap {
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-start;
-	gap: 15px;
+	justify-content: center;
 	align-items: center;
+	gap: 15px;
+
 	position: -webkit-sticky;
 	position: sticky;
-	top: 120px;
-	height: 50px;
+	top: 100px;
+	height: 50;
 	width: 500px;
-	background-color: rgba(46, 46, 46, 0.541);
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
+	max-width: 80vw;
+	border-color: red;
+	/* border-style: solid; */
+	z-index: 3;
+	margin-bottom: 15px;
+	/* background-color: rgba(46, 46, 46, 0.541); */
+	/* backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px); */
 }
 
 table {
+	display: flex;
+	/* justify-content: center; */
+	align-items: center;
+	flex-direction: column;
 	margin-bottom: 100vh;
+	width: 500px;
+	max-width: 80vw;
+}
+
+.country-element {
+	background-image: linear-gradient(
+		to bottom right,
+		rgba(102, 102, 102, 0.068),
+		rgba(0, 0, 0, 0)
+	);
+
+	padding: 10px 20px 17px 20px;
+	border-radius: 10px;
+	margin-bottom: 100px;
+}
+.country-element-div {
+	margin-bottom: 5px;
+}
+/* .new_cases_graphs {
+	border-color: red;
+	border-style: solid;
+} */
+
+canvas {
+	background-image: linear-gradient(
+		to top,
+		rgba(0, 0, 0, 0.2),
+		rgba(0, 0, 0, 0.1),
+		rgba(0, 0, 0, 0.05),
+		rgba(0, 0, 0, 0)
+	);
+	border-color: red;
+	/* border-style: solid; */
+}
+
+.country_name_div {
+	font-weight: bold;
+}
+
+.play-button-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
 }
 
 #main-page {
@@ -75,21 +167,24 @@ table {
 }
 #title-graphics {
 	width: 500px;
+	max-width: 80vw;
 	height: 10px;
 	background-image: linear-gradient(to right, blue, blueviolet);
-	margin-bottom: 15px;
+
 	border-radius: 10px;
 }
 
 #summary_div {
-	width: 500px;
-	height: 300px;
+	width: 470px;
+	max-width: 80vw;
+	height: min-content;
 	background-color: rgba(0, 0, 0, 0.425);
 	border-radius: 10px;
 	padding: 10px 15px 10px 15px;
 	text-align: left;
-	margin-bottom: 15px;
-	margin-top: 70px;
+	margin-bottom: 5px;
+	margin-top: 60px;
+	z-index: 2;
 }
 /* .country_name_divs {
 } */
@@ -98,11 +193,12 @@ table {
 	text-align: center;
 	background-color: blueviolet;
 	color: white;
-	width: 100px;
+	width: min-content;
 	height: auto;
 	padding: 2px;
 	border-radius: 100px;
 	cursor: pointer;
+	padding: 2px 15px 2px 15px;
 }
 
 .button-div:active {
@@ -111,7 +207,7 @@ table {
 
 .runner-div-animated {
 	background-color: blueviolet;
-	width: 0px;
+	width: 5px;
 	height: 5px;
 	animation-duration: 2s;
 	animation-name: runner;
@@ -123,17 +219,18 @@ table {
 
 @keyframes runner {
 	0% {
-		width: 10px;
+		width: 5px;
 	}
 	100% {
-		width: 500px;
+		width: 100%;
 	}
 }
 
 .runner-div {
-	background-color: red;
+	background-color: blueviolet;
 	width: 0px;
 	height: 5px;
+	border-radius: 10px;
 	margin-bottom: 5px;
 }
 

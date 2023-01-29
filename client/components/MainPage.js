@@ -12,7 +12,7 @@ export default function MainPage() {
 	// const dispatch = useDispatch();
 	// const [playStatus, setPlayStatus] = useState({});
 	// const messages = useSelector((state) => state.messages);
-	const canvasW = 500;
+	const canvasW = canvasWidth();
 	const canvasH = 100;
 	const canvasPadding = 5;
 	//Handling form input
@@ -69,13 +69,21 @@ export default function MainPage() {
 	// 	return arr;
 	// }
 
+	function canvasWidth() {
+		if (screen.width * 0.8 < 500) {
+			return screen.width * 0.8 - 42;
+		} else {
+			return 500 - 42;
+		}
+	}
+
 	function generateGraph(countryCode, data, type) {
+		console.log('SCREEN WIDTH', screen.width);
 		const c = document.getElementById(`${countryCode}_chart_${type}`);
 		var ctx = c.getContext('2d');
 		const casesDataArr = data.filter(
 			(elem) => elem.countryCode === countryCode
 		)[0].casesArr;
-		let strokeStyle = '';
 		let r, g, b;
 		let sign = 1;
 		if (type === 'new_cases') {
@@ -172,7 +180,7 @@ export default function MainPage() {
 		table = document.getElementById('countries_table');
 		tr = table.getElementsByTagName('tr');
 		for (let i = 0; i < tr.length; i++) {
-			countryNameDiv = tr[i].getElementsByClassName('country_name_divs')[0];
+			countryNameDiv = tr[i].getElementsByClassName('country_name_div')[0];
 			if (countryNameDiv) {
 				txtValue = countryNameDiv.textContent || countryNameDiv.innerText;
 				if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -221,6 +229,7 @@ export default function MainPage() {
 	}
 	return (
 		<div id='main-page'>
+			<div id='top-div'></div>
 			<div id='header-wrapper'>
 				<div id='header'>Pandemic Beat</div>
 				<div id='title-graphics'></div>
@@ -246,11 +255,11 @@ export default function MainPage() {
 					type='text'
 					id='search_input'
 					onKeyUp={searchCountry}
-					placeholder='Search for country..'
+					placeholder='Lookup country...'
 					title='Type in a name'
 				/>
 				<div className='button-div' onClick={clearSearch}>
-					Clear search
+					Clear
 				</div>
 			</div>
 			<div id='buttons-wrap'>
@@ -282,35 +291,38 @@ export default function MainPage() {
 			></audio> */}
 			{/* <div onClick={playAudio}>play button</div> */}
 			<table id='countries_table'>
-				{countriesArr.map((countryCode) => (
-					<tr>
-						<td>
-							<div className='country_name_divs'>
-								{returnCountryName(countryCode)}
-							</div>
+				<tbody>
+					{countriesArr.map((countryCode) => (
+						<tr>
+							<div className='country-element-div'>
+								<td className='country-element'>
+									<div className='country_name_div'>
+										{returnCountryName(countryCode)}
+									</div>
 
-							{/* <canvas id={`${countryCode}_chart`}></canvas> */}
-							<div className='new_cases_graphs'>
-								<canvas
-									id={`${countryCode}_chart_new_cases`}
-									width={canvasW}
-									height={canvasH}
-								></canvas>
-								<Player country={countryCode} type={'new_cases'} />
+									{/* <canvas id={`${countryCode}_chart`}></canvas> */}
+									<div className='new_cases_graphs'>
+										<canvas
+											id={`${countryCode}_chart_new_cases`}
+											width={canvasW}
+											height={canvasH}
+										></canvas>
+										<Player country={countryCode} type={'new_cases'} />
+									</div>
+									<div className='deceased_graphs' style={{ display: 'none' }}>
+										<canvas
+											id={`${countryCode}_chart_deceased`}
+											width={canvasW}
+											height={canvasH}
+										></canvas>
+										<Player country={countryCode} type={'new_deceased'} />
+									</div>
+								</td>
 							</div>
-							<div className='deceased_graphs' style={{ display: 'none' }}>
-								<canvas
-									id={`${countryCode}_chart_deceased`}
-									width={canvasW}
-									height={canvasH}
-								></canvas>
-								<Player country={countryCode} type={'new_deceased'} />
-							</div>
-
-							{/* <hr /> */}
-						</td>
-					</tr>
-				))}
+						</tr>
+					))}
+					{/* <p>created by Kostya Balakirev</p> */}
+				</tbody>
 			</table>
 		</div>
 	);

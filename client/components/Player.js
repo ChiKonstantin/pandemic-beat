@@ -56,8 +56,10 @@ export default function Player(props) {
 				onPause={setPlay}
 				onPlay={setStop}
 			></audio>
-			<div id={`${country}`} className='button-div' onClick={playAudio}>
-				{returnCountryPlayStatus(country)}
+			<div className='play-button-wrapper'>
+				<div id={`${country}`} className='button-div' onClick={playAudio}>
+					{returnCountryPlayStatus(country)}
+				</div>
 			</div>
 		</>
 	);
