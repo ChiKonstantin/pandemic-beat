@@ -237,18 +237,7 @@ export default function MainPage() {
 			{/* <div>by Kostya Balakirev</div> */}
 
 			<div id='summary_div'>
-				1871 is a non-profit digital startup incubator located in the
-				Merchandise Mart, Chicago, Illinois.[1] The organization was founded in
-				2012 by J.B. Pritzker and is the flagship project of The Chicagoland
-				Entrepreneurial Center (CEC), a non-profit organization that supports
-				entrepreneurs on their path to building high-growth, sustainable
-				businesses that serve as platforms for economic development and civic
-				leadership. Led by CEO Betsy Ziegler, 1871 has become a major hub of
-				Chicago's technology and entrepreneurial ecosystem and hosts over 400
-				early-stage companies as well as nationally recognized accelerators,
-				industry-specific incubators, and tech talent schools.[1][2] 1871 was
-				recognized in 2019 by UBI Global as the Top Private Business Incubator
-				in the World and Most Promising Incubator for Women Founders.
+				The COVID-19 pandemic, also known as the coronavirus pandemic, is an ongoing global pandemic of coronavirus disease 2019 (COVID-19) caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). The novel virus was first identified in an outbreak in the Chinese city of Wuhan in December 2019. Attempts to contain it there failed, allowing the virus to spread to other areas of Asia and later worldwide. The World Health Organization (WHO) declared the outbreak a public health emergency of international concern on 30 January 2020, and a pandemic on 11 March 2020. As of 27 January 2023, the pandemic had caused more than 670 million cases and 6.82 million confirmed deaths, making it one of the deadliest in history.
 			</div>
 			<div id='search-wrap'>
 				<input
