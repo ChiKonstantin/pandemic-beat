@@ -51,11 +51,15 @@ export default function Player(props) {
 			<div className={runnerDivName}></div>
 			<audio
 				id={`${country}_audio_${type}`}
-				src={`https://storage.googleapis.com/pandemic_beat_wavs/sound_files_${type}/${country}_pandemic_beat${fileEnding}.wav`}
+				type='audio/wav'
 				onEnded={setPlay}
 				onPause={setPlay}
 				onPlay={setStop}
-			></audio>
+			>
+				<source
+					src={`https://storage.googleapis.com/pandemic_beat_wavs/sound_files_${type}/${country}_pandemic_beat${fileEnding}.wav`}
+				/>
+					</audio>
 			<div className='play-button-wrapper'>
 				<div id={`${country}`} className='button-div' onClick={playAudio}>
 					{returnCountryPlayStatus(country)}
