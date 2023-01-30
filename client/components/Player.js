@@ -61,7 +61,7 @@ export default function Player(props) {
 					type='audio/wav'
 				/>
 				<source
-					src={`https://storage.googleapis.com/pandemic_beat_wavs/sound_files_${type}_mp3/${country}_pandemic_beat${fileEnding}.wav`}
+					src={`https://storage.googleapis.com/pandemic_beat_wavs/sound_files_${type}_mp3/${country}_pandemic_beat${fileEnding}.mp3`}
 					type='audio/mpeg'
 				/>
 					</audio>
