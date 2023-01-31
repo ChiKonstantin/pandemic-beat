@@ -148,6 +148,7 @@ export default function MainPage() {
 		table = document.getElementById('countries_table');
 		tr = table.getElementsByTagName('tr');
 		bringToTop();
+
 		for (let i = 0; i < tr.length; i++) {
 			countryNameDiv = tr[i].getElementsByClassName('country_name_div')[0];
 			if (countryNameDiv) {
@@ -224,13 +225,19 @@ export default function MainPage() {
 		) {
 			return 0;
 		} else {
-			document.body.scrollTop = countriesTable.offsetTop - 140;
-			document.documentElement.scrollTop = countriesTable.offsetTop - 140;
+			// document.body.scrollTop = countriesTable.offsetTop - 140;
+			// document.documentElement.scrollTop = countriesTable.offsetTop - 140;
+
+			window.scrollTo({
+				top: countriesTable.offsetTop - 140,
+				behavior: 'smooth',
+			});
 		}
 	}
 
 	return (
 		<div id='main-page'>
+			{/* <div id='portfolio-div'>Link to my portfolio page.</div> */}
 			<div id='top-div'></div>
 			<div id='header-wrapper'>
 				<div id='header'>Pandemic Beat</div>
