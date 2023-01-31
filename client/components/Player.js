@@ -38,6 +38,9 @@ export default function Player(props) {
 	function playAudio(event) {
 		const country = event.target.id;
 		const countryAudio = document.getElementById(`${country}_audio_${type}`);
+		while (countryAudio.buffered < 7) {
+			console.log('%%%%', countryAudio.buffered);
+		}
 		if (!countryAudio.paused) {
 			countryAudio.pause();
 			countryAudio.currentTime = 0;
@@ -46,16 +49,30 @@ export default function Player(props) {
 		}
 	}
 
+	function disablePlay(event) {
+		const countryCode = event.target.id.slice(0, 2);
+	}
+
 	return (
 		<>
 			<div className={runnerDivName}></div>
 			<audio
 				id={`${country}_audio_${type}`}
-				src={`https://storage.googleapis.com/pandemic_beat_wavs/sound_files_${type}/${country}_pandemic_beat${fileEnding}.wav`}
+				// src={`https://storage.googleapis.com/pandemic_beat_wavs/sound_files_${type}/${country}_pandemic_beat${fileEnding}.wav`}
 				onEnded={setPlay}
 				onPause={setPlay}
 				onPlay={setStop}
-			></audio>
+				onWaiting={setPlay}
+			>
+				<source
+					src={`https://storage.googleapis.com/pandemic_beat_wavs/sound_files_${type}_mp3/${country}_pandemic_beat${fileEnding}.mp3`}
+					type='audio/mpeg'
+				/>
+				<source
+					src={`https://storage.googleapis.com/pandemic_beat_wavs/sound_files_${type}/${country}_pandemic_beat${fileEnding}.wav`}
+					type='audio/wav'
+				/>
+			</audio>
 			<div className='play-button-wrapper'>
 				<div id={`${country}`} className='button-div' onClick={playAudio}>
 					{returnCountryPlayStatus(country)}
