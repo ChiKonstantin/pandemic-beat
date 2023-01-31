@@ -32,7 +32,7 @@ export default function Player(props) {
 		if (playStatus[country]) {
 			return playStatus[country];
 		} else {
-			return `Loading...`;
+			return `PLAY`;
 		}
 	}
 	function playAudio(event) {
@@ -49,10 +49,10 @@ export default function Player(props) {
 		}
 	}
 
-	function setLoaded(event) {
-		const countryCode = event.target.id.slice(0, 2);
-		document.getElementById(`${countryCode}`).innerText = 'PLAY';
-	}
+	// function setLoaded(event) {
+	// 	const countryCode = event.target.id.slice(0, 2);
+	// 	document.getElementById(`${countryCode}`).innerText = 'PLAY';
+	// }
 
 	return (
 		<>
@@ -63,8 +63,8 @@ export default function Player(props) {
 				onEnded={setPlay}
 				onPause={setPlay}
 				onPlaying={setStop}
-				onCanPlayThrough={setLoaded}
-				onLoad={setLoaded}
+				// onCanPlayThrough={setLoaded}
+				// onLoad={setLoaded}
 			>
 				<source
 					src={`https://storage.googleapis.com/pandemic_beat_wavs/sound_files_${type}_mp3/${country}_pandemic_beat${fileEnding}.mp3`}

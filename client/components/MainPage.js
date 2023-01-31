@@ -115,38 +115,6 @@ export default function MainPage() {
 		}
 	}
 
-	function generateChart(countryCode) {
-		const ctx = document.getElementById(`${countryCode}_chart`);
-		const newCases = newCasesData.filter(
-			(elem) => elem.countryCode === countryCode
-		)[0].casesArr;
-		console.log('NEW CASES ', newCases);
-		const myChart = new Chart(ctx, {
-			type: 'bar',
-			data: {
-				labels: newCases,
-				datasets: [
-					{
-						data: newCases,
-						borderWidth: 1,
-					},
-				],
-			},
-			// options: {
-			// legend: {
-			// 	display: false,
-			// },
-			// scales: {
-			// 	y: {
-			// 		beginAtZero: true,
-			// 	},
-			// },
-			// },
-		});
-		console.log('CHART GENERATION!!!!');
-		return myChart;
-	}
-
 	function returnCountryName(countryCode) {
 		const countryName = newCasesData.filter(
 			(elem) => elem.countryCode === countryCode
@@ -240,16 +208,29 @@ export default function MainPage() {
 			document.body.scrollTop > countriesTable.offsetTop ||
 			document.documentElement.scrollTop > countriesTable.offsetTop
 		) {
-			toTopButton.style.display = 'block';
+			toTopButton.style.visibility = 'visible';
+			toTopButton.style.opacity = 1;
 		} else {
-			toTopButton.style.display = 'none';
+			toTopButton.style.visibility = 'hidden';
+			toTopButton.style.opacity = 0;
 		}
 	}
 
 	function bringToTop() {
 		let countriesTable = document.getElementById('countries_table');
-		document.body.scrollTop = countriesTable.offsetTop - 140;
-		document.documentElement.scrollTop = countriesTable.offsetTop - 140;
+		console.log('SCROLLL POSITION', document.body.scrollTop);
+		console.log('SCROLLL document element', document.documentElement.scrollTop);
+		console.log('COUNTRIES TABLE OFFEST: ', countriesTable.offsetTop) - 140;
+
+		if (
+			Math.max(document.body.scrollTop, document.documentElement.scrollTop) <
+			countriesTable.offsetTop - 140
+		) {
+			console.log('NO NEED TO SCROLL');
+		} else {
+			document.body.scrollTop = countriesTable.offsetTop - 140;
+			document.documentElement.scrollTop = countriesTable.offsetTop - 140;
+		}
 	}
 
 	return (
@@ -311,7 +292,7 @@ export default function MainPage() {
 					<div
 						id='to-top-button'
 						className='button-div'
-						style={{ display: 'none' }}
+						// style={{ visibility: 'hidden' }}
 						onClick={bringToTop}
 					>
 						Top

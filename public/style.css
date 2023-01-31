@@ -129,10 +129,6 @@ table {
 .country-element-div {
 	margin-bottom: 5px;
 }
-/* .new_cases_graphs {
-	border-color: red;
-	border-style: solid;
-} */
 
 canvas {
 	background-image: linear-gradient(
@@ -199,6 +195,7 @@ canvas {
 	border-radius: 100px;
 	cursor: pointer;
 	padding: 2px 15px 2px 15px;
+	transition: background-color 0.1s;
 }
 
 .button-div:active {
@@ -207,7 +204,7 @@ canvas {
 
 .runner-div-animated {
 	background-color: blueviolet;
-	width: 5px;
+	width: 0px;
 	height: 5px;
 	animation-duration: 2s;
 	animation-name: runner;
@@ -219,7 +216,7 @@ canvas {
 
 @keyframes runner {
 	0% {
-		width: 5px;
+		width: 0px;
 	}
 	100% {
 		width: 100%;
@@ -236,17 +233,23 @@ canvas {
 
 #new_cases_button {
 	background-color: blue;
-}
-
-#new_cases_button:hover {
-	background-color: yellow;
+	transition: background-color 0.15s;
+	/* transition-timing-function: ease-out; */
 }
 
 #deceased_button {
 	background-color: grey;
+	transition: background-color 0.15s;
+	/* transition-timing-function: ease-out; */
+}
+#deceased_button:hover {
+	transition: background-color 0.15s;
+	/* transition-timing-function: ease-out; */
 }
 #deceased_button {
 	background-color: grey;
+	transition: background-color 0.15s;
+	/* transition-timing-function: ease-out; */
 }
 
 #to-top-button {
@@ -255,6 +258,9 @@ canvas {
 	right: 30px;
 	z-index: 99;
 	padding: 7px 15px 10px 15px;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.2s;
 }
 
 #bottom-div {
