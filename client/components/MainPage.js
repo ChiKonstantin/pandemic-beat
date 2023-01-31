@@ -88,16 +88,16 @@ export default function MainPage() {
 		let sign = 1;
 		if (type === 'new_cases') {
 			// strokeStyle = '#474DFF';
-			r = 71;
-			g = 77;
-			b = 255;
-			sign = 1;
+			r = 0;
+			g = 255;
+			b = 0;
+			sign = 0;
 		} else {
 			// strokeStyle = '#BF4CCE';
-			r = 191;
-			g = 76;
-			b = 201;
-			sign = -1;
+			r = 0;
+			g = 0;
+			b = 0;
+			sign = 0;
 		}
 		const casesMax = Math.max(...casesDataArr);
 		const scaleFactor =
@@ -107,7 +107,7 @@ export default function MainPage() {
 			const topOffset = canvasH - casesDataArr[i] * scaleFactor;
 			const leftOffset = spacing * (i + 1);
 			ctx.beginPath();
-			ctx.strokeStyle = `rgb(${r + i * sign}, ${g}, ${b})`;
+			ctx.strokeStyle = `rgb(${r}, ${g}, ${b})`;
 			ctx.lineWidth = '2';
 			ctx.moveTo(leftOffset, canvasH);
 			ctx.lineTo(leftOffset, topOffset);
@@ -172,7 +172,7 @@ export default function MainPage() {
 	function showGraphs(type) {
 		let newCasesButton = document.getElementById('new_cases_button');
 		let deceasedButton = document.getElementById('deceased_button');
-		newCasesButton.style.backgroundColor = 'blue';
+		newCasesButton.style.backgroundColor = '#00E100';
 		deceasedButton.style.backgroundColor = 'grey';
 		let newCasesDisplay = '';
 		let deceasedDisplay = 'none';
@@ -180,7 +180,7 @@ export default function MainPage() {
 			newCasesDisplay = 'none';
 			deceasedDisplay = '';
 			newCasesButton.style.backgroundColor = 'grey';
-			deceasedButton.style.backgroundColor = 'blue';
+			deceasedButton.style.backgroundColor = '#00E100';
 		}
 		let newCasesGraphs = document.getElementsByClassName('new_cases_graphs');
 		let deceasedGraphs = document.getElementsByClassName('deceased_graphs');
@@ -218,15 +218,11 @@ export default function MainPage() {
 
 	function bringToTop() {
 		let countriesTable = document.getElementById('countries_table');
-		console.log('SCROLLL POSITION', document.body.scrollTop);
-		console.log('SCROLLL document element', document.documentElement.scrollTop);
-		console.log('COUNTRIES TABLE OFFEST: ', countriesTable.offsetTop) - 140;
-
 		if (
 			Math.max(document.body.scrollTop, document.documentElement.scrollTop) <
 			countriesTable.offsetTop - 140
 		) {
-			console.log('NO NEED TO SCROLL');
+			return 0;
 		} else {
 			document.body.scrollTop = countriesTable.offsetTop - 140;
 			document.documentElement.scrollTop = countriesTable.offsetTop - 140;
@@ -271,7 +267,7 @@ export default function MainPage() {
 				<div
 					id='new_cases_button'
 					className='button-div'
-					style={{ backgroundColor: 'blue' }}
+					style={{ backgroundColor: '#00E100' }}
 					onClick={() => {
 						showGraphs('new_cases');
 					}}

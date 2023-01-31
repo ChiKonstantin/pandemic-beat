@@ -1,6 +1,6 @@
 body {
-	/* background-color: #21222b; */
-	background-image: linear-gradient(to top, #2a3c04, #21222b, #21222b);
+	background-color: #21222b;
+	/* background-image: linear-gradient(to top, #2a3c04, #21222b, #21222b); */
 	color: white;
 	position: static;
 }
@@ -19,7 +19,7 @@ body {
 	-webkit-backdrop-filter: blur(7px); */
 	background-image: linear-gradient(
 		to bottom,
-		#c4545c,
+		black,
 		/* #c4545c,
 		#c4545c, */ rgba(255, 255, 255, 0)
 	);
@@ -42,8 +42,8 @@ body {
 	z-index: 3;
 	background-image: linear-gradient(
 		to bottom,
-		#c4545c,
-		#c4545c,
+		black,
+		black,
 		/* #c4545c, */ rgba(255, 255, 255, 0)
 	);
 	margin-bottom: 15px;
@@ -57,10 +57,11 @@ body {
 } */
 
 #search_input {
+	font-size: large;
 	width: 80vw;
 	z-index: 3;
 	padding: 5px 10px 5px 20px;
-	border-radius: 50px;
+	border-radius: 4px;
 	border: 0px solid;
 }
 #search-wrap {
@@ -115,6 +116,23 @@ table {
 	max-width: 80vw;
 }
 
+#background {
+	height: 99vh;
+	background-image: linear-gradient(to top, red, blue);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	padding: 0px;
+	margin: 0px;
+	position: static;
+	top: 0px;
+	/* background-color: #c4545c63; */
+	/* 
+	height: 100vh;
+	width: 100vw;
+	z-index: 2; */
+}
+
 .country-element {
 	background-image: linear-gradient(
 		to bottom right,
@@ -133,14 +151,30 @@ table {
 canvas {
 	background-image: linear-gradient(
 		to top,
-		rgba(0, 0, 0, 0.2),
-		rgba(0, 0, 0, 0.1),
-		rgba(0, 0, 0, 0.05),
+
+		rgba(0, 225, 0),
+		rgba(0, 225, 0, 0.5),
+		rgba(0, 225, 0, 0.25),
 		rgba(0, 0, 0, 0)
 	);
-	border-color: red;
+	/* border-color: red; */
 	/* border-style: solid; */
+	transition: 2s;
 }
+
+/* canvas:hover {
+	background-image: linear-gradient(
+		to top,
+		white,
+		#e1c7e1,
+		#6c65cf2c,
+		#6c65cf17,
+		#6c65cf17,
+		rgba(0, 0, 0, 0)
+	);
+
+	transition: 2s;
+} */
 
 .country_name_div {
 	font-weight: bold;
@@ -165,9 +199,8 @@ canvas {
 	width: 500px;
 	max-width: 80vw;
 	height: 10px;
-	background-image: linear-gradient(to right, #f6d4cd, #f6d4cd);
-
-	border-radius: 10px;
+	background-image: linear-gradient(to right, black, rgb(0, 224, 0));
+	border-radius: 2px;
 }
 
 #summary_div {
@@ -186,13 +219,14 @@ canvas {
 } */
 
 .button-div {
+	font-size: large;
 	text-align: center;
-	background-color: blueviolet;
-	color: white;
+	background-color: rgb(0, 225, 0);
+	color: black;
 	width: min-content;
 	height: auto;
 	padding: 2px;
-	border-radius: 100px;
+	border-radius: 4px;
 	cursor: pointer;
 	padding: 2px 15px 2px 15px;
 	transition: background-color 0.1s;
@@ -203,14 +237,15 @@ canvas {
 }
 
 .runner-div-animated {
-	background-color: blueviolet;
+	/* background-color: rgb(0, 225, 0); */
+	background-image: linear-gradient(to right, rgba(36, 36, 44), rgb(0, 224, 0));
 	width: 0px;
 	height: 5px;
 	animation-duration: 2s;
 	animation-name: runner;
 	animation-timing-function: linear;
 	animation-iteration-count: 4;
-	border-radius: 10px;
+	border-radius: 1px;
 	margin-bottom: 5px;
 }
 
@@ -224,15 +259,15 @@ canvas {
 }
 
 .runner-div {
-	background-color: blueviolet;
+	/* background-color: white; */
 	width: 0px;
 	height: 5px;
-	border-radius: 10px;
+
 	margin-bottom: 5px;
 }
 
 #new_cases_button {
-	background-color: blue;
+	background-color: #00e100;
 	transition: background-color 0.15s;
 	/* transition-timing-function: ease-out; */
 }
@@ -270,9 +305,9 @@ canvas {
 	height: 80px;
 	background-image: linear-gradient(
 		to top,
-		#2a3c04,
-		#2a3c04,
-		rgba(33, 34, 43, 0)
+		rgb(0, 225, 0, 0.75),
+		rgba(0, 0, 0, 0),
+		rgba(0, 0, 0, 0)
 	);
 }
 
