@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { countriesArr } from '../countries';
 
 export default function Player(props) {
 	const { country, type } = props;
@@ -38,14 +39,28 @@ export default function Player(props) {
 	function playAudio(event) {
 		const country = event.target.id;
 		const countryAudio = document.getElementById(`${country}_audio_${type}`);
-		while (countryAudio.buffered < 7) {
-			console.log('%%%%', countryAudio.buffered);
-		}
+
 		if (!countryAudio.paused) {
 			countryAudio.pause();
 			countryAudio.currentTime = 0;
 		} else {
 			countryAudio.play();
+			const otherCountries = countriesArr.filter((elem) => elem !== country);
+
+			for (let i = 0; i < otherCountries.length; i++) {
+				const audioToStopNewCases = document.getElementById(
+					`${otherCountries[i]}_audio_new_cases`
+				);
+
+				const audioToStopDeceased = document.getElementById(
+					`${otherCountries[i]}_audio_new_deceased`
+				);
+
+				audioToStopNewCases.pause();
+				audioToStopNewCases.currentTime = 0;
+				audioToStopDeceased.pause();
+				audioToStopDeceased.currentTime = 0;
+			}
 		}
 	}
 
