@@ -32,7 +32,7 @@ export default function Player(props) {
 		if (playStatus[country]) {
 			return playStatus[country];
 		} else {
-			return `PLAY`;
+			return `Loading...`;
 		}
 	}
 	function playAudio(event) {
@@ -49,8 +49,9 @@ export default function Player(props) {
 		}
 	}
 
-	function disablePlay(event) {
+	function setLoaded(event) {
 		const countryCode = event.target.id.slice(0, 2);
+		document.getElementById(`${countryCode}`).innerText = 'PLAY';
 	}
 
 	return (
@@ -61,8 +62,8 @@ export default function Player(props) {
 				// src={`https://storage.googleapis.com/pandemic_beat_wavs/sound_files_${type}/${country}_pandemic_beat${fileEnding}.wav`}
 				onEnded={setPlay}
 				onPause={setPlay}
-				onPlay={setStop}
-				onWaiting={setPlay}
+				onPlaying={setStop}
+				onCanPlayThrough={setLoaded}
 			>
 				<source
 					src={`https://storage.googleapis.com/pandemic_beat_wavs/sound_files_${type}_mp3/${country}_pandemic_beat${fileEnding}.mp3`}
@@ -77,6 +78,9 @@ export default function Player(props) {
 				<div id={`${country}`} className='button-div' onClick={playAudio}>
 					{returnCountryPlayStatus(country)}
 				</div>
+				{/* <div id={`${country}_loaded`} className={'loading-div'}>
+					Loading...
+				</div> */}
 			</div>
 		</>
 	);

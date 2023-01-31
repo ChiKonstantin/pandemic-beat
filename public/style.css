@@ -268,3 +268,8 @@ canvas {
 		rgba(33, 34, 43, 0)
 	);
 }
+
+.loading-div {
+	position: relative;
+	bottom: 50px;
+}
