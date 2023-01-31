@@ -12,7 +12,7 @@ body {
 #top-div {
 	width: 100vw;
 	max-height: 20vw;
-	min-height: 145px;
+	min-height: 155px;
 	border-color: blue;
 	/* border-style: solid; */
 	position: fixed;
@@ -24,6 +24,7 @@ body {
 	background-image: linear-gradient(
 		to bottom,
 		black,
+		rgba(0, 0, 0, 0.877),
 		/* #c4545c,
 		#c4545c, */ rgba(255, 255, 255, 0)
 	);
@@ -75,7 +76,7 @@ body {
 	align-items: center;
 	position: -webkit-sticky;
 	position: sticky;
-	top: 50px;
+	top: 52px;
 	height: 50px;
 	width: 500px;
 	max-width: 80vw;
@@ -97,7 +98,7 @@ body {
 
 	position: -webkit-sticky;
 	position: sticky;
-	top: 100px;
+	top: 103px;
 	height: 50;
 	width: 500px;
 	max-width: 80vw;
