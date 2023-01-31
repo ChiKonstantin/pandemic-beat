@@ -64,6 +64,7 @@ export default function Player(props) {
 				onPause={setPlay}
 				onPlaying={setStop}
 				onCanPlayThrough={setLoaded}
+				onLoad={setLoaded}
 			>
 				<source
 					src={`https://storage.googleapis.com/pandemic_beat_wavs/sound_files_${type}_mp3/${country}_pandemic_beat${fileEnding}.mp3`}
@@ -78,9 +79,6 @@ export default function Player(props) {
 				<div id={`${country}`} className='button-div' onClick={playAudio}>
 					{returnCountryPlayStatus(country)}
 				</div>
-				{/* <div id={`${country}_loaded`} className={'loading-div'}>
-					Loading...
-				</div> */}
 			</div>
 		</>
 	);

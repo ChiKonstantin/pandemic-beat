@@ -254,6 +254,7 @@ canvas {
 	bottom: 20px;
 	right: 30px;
 	z-index: 99;
+	padding: 7px 15px 10px 15px;
 }
 
 #bottom-div {
