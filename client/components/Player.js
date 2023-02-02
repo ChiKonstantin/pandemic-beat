@@ -36,6 +36,20 @@ export default function Player(props) {
 			return `PLAY`;
 		}
 	}
+
+	function findAndStopAudio(countryCode) {
+		const audioToStopNewCases = document.getElementById(
+			`${countryCode}_audio_new_cases`
+		);
+		const audioToStopDeceased = document.getElementById(
+			`${countryCode}_audio_new_deceased`
+		);
+		audioToStopNewCases.pause();
+		audioToStopNewCases.currentTime = 0;
+		audioToStopDeceased.pause();
+		audioToStopDeceased.currentTime = 0;
+	}
+
 	function playAudio(event) {
 		const country = event.target.id;
 		const countryAudio = document.getElementById(`${country}_audio_${type}`);
@@ -44,6 +58,21 @@ export default function Player(props) {
 			countryAudio.pause();
 			countryAudio.currentTime = 0;
 		} else {
+			// const stopPlabackEvent = new Event('stop-playback');
+			countryAudio.addEventListener('stop-playback', () => {
+				countryAudio.pause();
+				countryAudio.currentTime = 0;
+				console.log('STOPPED COUNTRY:', country);
+			});
+			// countryAudio.dispatchEvent(stopPlabackEvent);
+
+			// const countryToPause = 'hii';
+			// document.addEventListener(
+			// 	'play',
+			// 	document.getElementById(`${event.target.id}_audio_${type}`).pause()
+			// );
+
+			// console.log('COUNTRY TO PAUSE', countryToPause);
 			countryAudio.play();
 			// const otherCountries = countriesArr.filter((elem) => elem !== country);
 
@@ -74,6 +103,7 @@ export default function Player(props) {
 			<div className={runnerDivName}></div>
 			<audio
 				id={`${country}_audio_${type}`}
+				className='all-audios'
 				// src={`https://storage.googleapis.com/pandemic_beat_wavs/sound_files_${type}/${country}_pandemic_beat${fileEnding}.wav`}
 				onEnded={setPlay}
 				onPause={setPlay}

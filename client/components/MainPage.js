@@ -246,17 +246,49 @@ export default function MainPage() {
 			{/* <div>by Kostya Balakirev</div> */}
 
 			<div id='summary_div' style={{}}>
-				The COVID-19 pandemic, also known as the coronavirus pandemic, is an
-				ongoing global pandemic of coronavirus disease 2019 (COVID-19) caused by
-				severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). The novel
-				virus was first identified in an outbreak in the Chinese city of Wuhan
-				in December 2019. Attempts to contain it there failed, allowing the
-				virus to spread to other areas of Asia and later worldwide. The World
-				Health Organization (WHO) declared the outbreak a public health
-				emergency of international concern on 30 January 2020, and a pandemic on
-				11 March 2020. As of 27 January 2023, the pandemic had caused more than
-				670 million cases and 6.82 million confirmed deaths, making it one of
-				the deadliest in history.
+				<div id='name-div'>
+					{' '}
+					<img src='kostya_profile.png' id='profile-pic'></img> Kostya Balakirev
+				</div>
+				<hr />
+				<p>
+					Recently, the world marked the fourth anniversary of the COVID-19
+					pandemic. During that time, we have collected a vast amount of data
+					describing it, and we are all familiar with how these graphs look. But
+					have you ever wondered what they would sound like? After noticing how
+					the graphs resembled sound waves, I wrote code to convert COVID-19
+					graphs by country into audio files. The results vary depending on the
+					amount and quality of data from each country, but most of the sounds
+					generated were distinctive and eerie.
+				</p>
+				<p>
+					The data was sourced from{' '}
+					<a href='https://health.google.com/covid-19/open-data/raw-data'>
+						Google Open Data
+					</a>
+					. To make up for the lack of data points (1000 per country, whereas a
+					second of audio requires at least 8000 data points at a low 8000 Hz
+					sample rate) I used linear interpolation.
+				</p>
+				<p>
+					Several observations: Most audios will have a distinctive “buzz” due
+					to cyclical ups and downs with a period of seven days - these
+					oscillations could be due to reporting practices. More on this{' '}
+					<a href='https://www.sciencedaily.com/releases/2020/07/200714132741.htm'>
+						here
+					</a>
+					. Some countries will sound more “staticky” than the others, like a
+					choppy radio signal or a worn-out vinyl record - this is prevalent for
+					countries with smaller populations and abrupt data fluctuations.
+				</p>
+				<p>
+					It's easy to forget that behind every number is a story of an actual
+					human being and a possible tragedy, let's keep this in mind.
+				</p>
+				<p>
+					If you want to contact me for more details on this project, please use
+					my <a href='https://www.linkedin.com/in/kbalakirev/'>LinkedIn.</a>
+				</p>
 			</div>
 			<div id='search-wrap'>
 				<input
