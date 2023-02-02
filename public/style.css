@@ -12,7 +12,14 @@ body {
 a {
 	color: rgba(0, 225, 0);
 	font-weight: bold;
+	text-decoration-line: none;
 }
+
+a:hover {
+	/* color: rgb(1, 102, 1); */
+	color: white;
+}
+
 #top-div {
 	width: 100vw;
 	max-height: 20vw;
@@ -70,7 +77,7 @@ a {
 	width: 70vw;
 	z-index: 3;
 	padding: 5px 10px 5px 20px;
-	border-radius: 4px;
+	border-radius: 10px;
 	border: 0px solid;
 }
 #search-wrap {
@@ -120,7 +127,7 @@ table {
 	/* justify-content: center; */
 	align-items: center;
 	flex-direction: column;
-	margin-bottom: 100vh;
+	margin-bottom: 100px;
 	width: 500px;
 	max-width: 80vw;
 }
@@ -169,6 +176,7 @@ canvas {
 	);
 	/* border-color: red; */
 	/* border-style: solid; */
+	border-radius: 10px;
 	transition: 2s;
 }
 
@@ -264,7 +272,7 @@ canvas {
 	width: min-content;
 	height: auto;
 	padding: 2px;
-	border-radius: 4px;
+	border-radius: 10px;
 	cursor: pointer;
 	padding: 4px 15px 4px 15px;
 	transition: background-color 0.1s;
@@ -377,7 +385,20 @@ canvas {
 	font-weight: 500;
 	gap: 10px;
 	margin-bottom: 0px;
+
 	/* border: #00e100 solid 1px; */
+}
+#name {
+	cursor: pointer;
+	color: white;
+
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+}
+
+#name:hover {
+	color: grey;
 }
 
 hr {

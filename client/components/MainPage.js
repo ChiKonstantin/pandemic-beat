@@ -256,7 +256,10 @@ export default function MainPage() {
 			<div id='summary_div' style={{}}>
 				<div id='name-div'>
 					{' '}
-					<img src='kostya_profile.png' id='profile-pic'></img> Kostya Balakirev
+					<img src='kostya_profile.png' id='profile-pic'></img>{' '}
+					<a href='https://www.linkedin.com/in/kbalakirev/' target='_blank'>
+						<div id='name'>Kostya Balakirev</div>
+					</a>
 				</div>
 				<hr />
 				<p>
@@ -267,7 +270,7 @@ export default function MainPage() {
 					the graphs resembled sound waves, I wrote code to convert COVID-19
 					graphs by country into audio files. The results vary depending on the
 					amount and quality of data from each country, but most of the sounds
-					generated were distinctive and eerie.
+					generated were distinctive.
 				</p>
 				<div id='expanded-summary' className='expanded-summary'>
 					<p>
