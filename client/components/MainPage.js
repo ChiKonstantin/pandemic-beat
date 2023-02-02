@@ -72,7 +72,7 @@ export default function MainPage() {
 
 	function canvasWidth() {
 		if (screen.width * 0.8 < 500) {
-			return screen.width * 0.8 - 15gi;
+			return screen.width * 0.8 - 15;
 		} else {
 			return 500 - 42;
 		}
