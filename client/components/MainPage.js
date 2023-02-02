@@ -225,13 +225,21 @@ export default function MainPage() {
 		) {
 			return 0;
 		} else {
-			// document.body.scrollTop = countriesTable.offsetTop - 140;
-			// document.documentElement.scrollTop = countriesTable.offsetTop - 140;
-
 			window.scrollTo({
 				top: countriesTable.offsetTop - 140,
 				behavior: 'smooth',
 			});
+		}
+	}
+
+	function expandSummary() {
+		const resizeDiv = document.getElementById('resize-div');
+		const expandedSummary = document.getElementById('expanded-summary');
+		expandedSummary.classList.toggle('open');
+		if (resizeDiv.innerHTML === 'More...') {
+			resizeDiv.innerHTML = 'Less...';
+		} else if (resizeDiv.innerHTML === 'Less...') {
+			resizeDiv.innerHTML = 'More...';
 		}
 	}
 
@@ -261,34 +269,48 @@ export default function MainPage() {
 					amount and quality of data from each country, but most of the sounds
 					generated were distinctive and eerie.
 				</p>
-				<p>
-					The data was sourced from{' '}
-					<a href='https://health.google.com/covid-19/open-data/raw-data'>
-						Google Open Data
-					</a>
-					. To make up for the lack of data points (1000 per country, whereas a
-					second of audio requires at least 8000 data points at a low 8000 Hz
-					sample rate) I used linear interpolation.
-				</p>
-				<p>
-					Several observations: Most audios will have a distinctive “buzz” due
-					to cyclical ups and downs with a period of seven days - these
-					oscillations could be due to reporting practices. More on this{' '}
-					<a href='https://www.sciencedaily.com/releases/2020/07/200714132741.htm'>
-						here
-					</a>
-					. Some countries will sound more “staticky” than the others, like a
-					choppy radio signal or a worn-out vinyl record - this is prevalent for
-					countries with smaller populations and abrupt data fluctuations.
-				</p>
-				<p>
-					It's easy to forget that behind every number is a story of an actual
-					human being and a possible tragedy, let's keep this in mind.
-				</p>
-				<p>
-					If you want to contact me for more details on this project, please use
-					my <a href='https://www.linkedin.com/in/kbalakirev/'>LinkedIn.</a>
-				</p>
+				<div id='expanded-summary' className='expanded-summary'>
+					<p>
+						The data was sourced from{' '}
+						<a
+							href='https://health.google.com/covid-19/open-data/raw-data'
+							target='_blank'
+						>
+							Google Open Data
+						</a>
+						. To make up for the lack of data points (1000 per country, whereas
+						a second of audio requires at least 8000 data points at a low 8000
+						Hz sample rate) I used linear interpolation.
+					</p>
+					<p>
+						Several observations: Most audios will have a distinctive “buzz” due
+						to cyclical ups and downs with a period of seven days - these
+						oscillations could be due to reporting practices. More on this{' '}
+						<a
+							href='https://www.sciencedaily.com/releases/2020/07/200714132741.htm'
+							target='_blank'
+						>
+							here
+						</a>
+						. Some countries will sound more “staticky” than the others, like a
+						choppy radio signal or a worn-out vinyl record - this is prevalent
+						for countries with smaller populations and abrupt data fluctuations.
+					</p>
+					<p>
+						It's easy to forget that behind every number is a story of an actual
+						human being and a possible tragedy, let's keep this in mind.
+					</p>
+					<p>
+						If you want to contact me for more details on this project, please
+						use my{' '}
+						<a href='https://www.linkedin.com/in/kbalakirev/' target='_blank'>
+							LinkedIn.
+						</a>
+					</p>
+				</div>
+				<div id='resize-div' onClick={expandSummary}>
+					More...
+				</div>
 			</div>
 			<div id='search-wrap'>
 				<input

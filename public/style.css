@@ -216,7 +216,7 @@ canvas {
 #summary_div {
 	width: 470px;
 	max-width: 80vw;
-	height: min-content;
+	height: auto;
 	background-color: rgba(0, 0, 0, 0.2);
 	border-radius: 10px;
 	padding: 10px 15px 10px 15px;
@@ -225,8 +225,36 @@ canvas {
 	margin-top: 60px;
 	z-index: 2;
 }
-/* .country_name_divs {
-} */
+
+.expanded-summary {
+	height: auto;
+	max-height: 0px;
+	transition: max-height 0.2s ease-in;
+	overflow-y: hidden;
+}
+
+.expanded-summary.open {
+	height: auto;
+	max-height: 1000px;
+	transition: max-height 0.2s ease-in;
+}
+
+#resize-div {
+	height: 15px;
+	z-index: 2;
+	font-weight: bold;
+	text-align: right;
+	position: relative;
+	top: -10px;
+	cursor: pointer;
+
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+}
+#resize-div:hover {
+	color: grey;
+}
 
 .button-div {
 	font-size: large;
@@ -252,7 +280,11 @@ canvas {
 
 .runner-div-animated {
 	/* background-color: rgb(0, 225, 0); */
-	background-image: linear-gradient(to right, rgba(36, 36, 44), rgb(0, 224, 0));
+	background-image: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0.2),
+		rgb(0, 224, 0)
+	);
 	width: 0px;
 	height: 5px;
 	animation-duration: 2s;
